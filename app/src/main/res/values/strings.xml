@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Sqlearn</string>
+    <string name="fragment_spalsh.logo.first_half">SQL</string>
+    <string name="fragment_spalsh.logo.second_half">earn</string>
 </resources>
