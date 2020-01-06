@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">Sqlearn</string>
+
+    <string name="nav_menu.settings">Settings</string>
+    <string name="nav_menu.menu">Menu</string>
+
     <string name="fragment_spalsh.logo.first_half">SQL</string>
     <string name="fragment_spalsh.logo.second_half">earn</string>
+
+    <string name="fragment_menu.toolbar.title">list of topics</string>
+    <string name="fragment_settings.toolbar.title">settings</string>
+    <string name="fragment_details.toolbar.title">details</string>
 </resources>
