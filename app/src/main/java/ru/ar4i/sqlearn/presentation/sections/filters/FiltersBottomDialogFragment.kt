@@ -15,7 +15,7 @@ class FiltersBottomDialogFragment : BottomSheetDialogFragment() {
 
     companion object {
 
-        val TAG = FiltersBottomDialogFragment.javaClass.simpleName
+        val TAG = "FiltersBottomDialogFragment"
 
         const val EXTRA_SORTING_TYPE = "EXTRA_SORTING_TYPE"
         const val EXTRA_FILTER_TYPE = "EXTRA_FILTER_TYPE"

@@ -1,6 +1,7 @@
 package ru.ar4i.sqlearn.data.database
 
 import androidx.room.Database
+import androidx.room.RoomDatabase
 import ru.ar4i.sqlearn.BuildConfig
 
 @Database(
@@ -8,7 +9,7 @@ import ru.ar4i.sqlearn.BuildConfig
     version = MainDatabase.DATABASE_VERSION,
     exportSchema = false
 )
-abstract class MainDatabase {
+abstract class MainDatabase: RoomDatabase() {
 
     companion object {
         const val DATABASE_NAME = "${BuildConfig.APPLICATION_ID}.database"

@@ -75,8 +75,8 @@ class SectionsFragment : BaseToolbarFragment() {
     }
 
     override fun onDestroyView() {
-        val visiblePosition =
-            (rvSections?.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+//        val visiblePosition =
+//            (rvSections?.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
         super.onDestroyView()
     }
 

@@ -7,7 +7,7 @@ import androidx.appcompat.widget.Toolbar
 import ru.ar4i.sqlearn.R
 import ru.ar4i.sqlearn.presentation.main.IToolbarActivity
 
-open abstract class BaseToolbarFragment : BaseFragment() {
+abstract class BaseToolbarFragment : BaseFragment() {
 
     private var tvTitle: TextView? = null
     private var toolbar: Toolbar? = null
