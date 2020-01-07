@@ -7,18 +7,18 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="ru.ar4i.sqlearn.splash.SplashFragment"
+        android:name="ru.ar4i.sqlearn.presentation.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash">
         <action
-            android:id="@+id/action_splashFragment_to_menuFragment"
-            app:destination="@id/menuFragment"
+            android:id="@+id/action_splashFragment_to_sectionsFragment"
+            app:destination="@id/sectionsFragment"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_left"
             app:launchSingleTop="false"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_left"
-            app:popUpTo="@+id/menuFragment"
+            app:popUpTo="@+id/sectionsFragment"
             app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_splashFragment_to_settingsFragment"
@@ -30,31 +30,44 @@
             app:popExitAnim="@anim/slide_out_left"
             app:popUpTo="@+id/settingsFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/menuFragment"
-        android:name="ru.ar4i.sqlearn.menu.MenuFragment"
+        android:id="@+id/sectionsFragment"
+        android:name="ru.ar4i.sqlearn.presentation.sections.SectionsFragment"
         android:label="fragment_menu"
-        tools:layout="@layout/fragment_menu">
+        tools:layout="@layout/fragment_sections">
         <action
-            android:id="@+id/action_menuFragment_to_detailsFragment"
+            android:id="@+id/action_sectionsFragment_to_detailsFragment"
             app:destination="@id/detailsFragment"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_left" />
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="ru.ar4i.sqlearn.details.DetailsFragment"
+        android:name="ru.ar4i.sqlearn.presentation.details.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="screenName"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="ru.ar4i.sqlearn.settings.SettingsFragment"
+        android:name="ru.ar4i.sqlearn.presentation.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="ru.ar4i.sqlearn.presentation.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>

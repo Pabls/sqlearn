@@ -1,4 +1,4 @@
-package ru.ar4i.sqlearn.base
+package ru.ar4i.sqlearn.presentation.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

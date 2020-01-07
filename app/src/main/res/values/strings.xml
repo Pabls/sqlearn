@@ -1,13 +1,87 @@
 <resources>
     <string name="app_name">Sqlearn</string>
+    <string name="common_empty"></string>
 
     <string name="nav_menu.settings">Settings</string>
     <string name="nav_menu.menu">Menu</string>
+    <string name="nav_menu.home">Home</string>
+
+    <string name="fragment_filter.sorting">Sorting :</string>
+    <string name="fragment_filter.sorting.asc">asc</string>
+    <string name="fragment_filter.sorting.desc">desc</string>
+    <string name="fragment_filter.filters">Show :</string>
+    <string name="fragment_filter.filters.all">all</string>
+    <string name="fragment_filter.filters.completed">completed</string>
+    <string name="fragment_filter.filters.not_completed">not completed</string>
+    <string name="fragment_filter.button.save">Save</string>
+    <string name="fragment_filter.button.reset">Reset</string>
+
+    <string name="sections_fragment_menu.search">Search</string>
+    <string name="sections_fragment_menu.hint">Search</string>
+    <string name="sections_fragment_menu.filter">Filter</string>
 
     <string name="fragment_spalsh.logo.first_half">SQL</string>
     <string name="fragment_spalsh.logo.second_half">earn</string>
 
-    <string name="fragment_menu.toolbar.title">list of topics</string>
+    <string name="fragment_menu.toolbar.title">List of topics</string>
+
+    <string name="item_section.section">Section</string>
+    <string name="item_section.dot">.</string>
+
     <string name="fragment_settings.toolbar.title">settings</string>
+
     <string name="fragment_details.toolbar.title">details</string>
+
+    <string name="fragment_home.title">SQLite Tutorial</string>
+    <string name="fragment_home.text">\tThis SQLite tutorial teaches you everything you need to know to start using SQLite effectively. You will learn SQLite through extensive hands-on practices.\n\n\tSQLite TutorialIf you have been working with other relational database management systems such as MySQL, PostgreSQL, Oracle, Microsoft SQL Server and you hear about SQLite. And you are curious to know more about it.\n\n\tIf your friends recommended you use an SQLite database instead of using a file to manage structured data in your applications. You want to get started with the SQLite immediately to see if you can utilize it for your apps.\n\n\tIf you are just starting out learning SQL and want to use SQLite as the database for your application.\n\n\tIf you are one of the people described above, this SQLite tutorial is for you.\n\n\tSQLite is an open-source, zero-configuration, self-contained, stand-alone, transaction relational database engine designed to be embedded into an application.\n\n</string>
+
+    <string-array name="sections">
+        <item>Simple query</item>
+        <item>Sorting rows</item>
+        <item>Filtering data</item>
+        <item>Joining tables</item>
+        <item>Grouping data</item>
+        <item>Set operators</item>
+        <item>Subquery</item>
+        <item>More querying techniques</item>
+        <item>Changing data</item>
+        <item>Transactions</item>
+        <item>Data definition</item>
+        <item>Views</item>
+        <item>Indexes</item>
+        <item>Triggers</item>
+        <item>Full-text search</item>
+        <item>SQLite tools</item>
+        <item>SQLite Aggregate Functions</item>
+        <item>SQLite Date Functions</item>
+        <item>SQLite String Functions</item>
+        <item>SQLite Window Functions</item>
+    </string-array>
+
+    <string-array name="description">
+        <item>SELECT – query data from a single table using SELECT statement.</item>
+        <item>ORDER BY – sort the result set in ascending or descending order.</item>
+        <item>SELECT DISTINCT – query unique rows from a table using the DISTINCT clause.\n\nWHERE  – filter rows of a result set using various conditions.\n\nLIMIT – constrain the number of rows that you want to return. The LIMIT clause helps you get the necessary data returned by a query.\n\nBETWEEN – test whether a value is in a range of values.\n\nIN – check if a value matches any value in a list of value or subquery.\n\nLIKE – query data based on pattern matching using wildcard characters: percent sign (%) and underscore (_).\n\nGLOB – determine whether a string matches a specific UNIX-pattern.\n\nIS NULL – check if a value is null or not. </item>
+        <item>SQLite JOIN – learn the overview of joins including inner join, left join, and cross join.\n\nINNER JOIN – query data from multiple tables using inner join clause.\n\nLEFT JOIN – combine data from multiple tables using left join clause.\n\nCROSS JOIN – show you how to use the cross join clause to produce a cartesian product of result sets of the tables involved in the join.\n\nSELF JOIN – join a table to itself to create a result set that joins rows with other rows within the same table.\n\nFULL OUTHER JOIN – show you how to emulate the full outer join in the SQLite using left join and union clauses.</item>
+        <item>GROUP BY – combine a set of rows into groups based on specified criteria. The GROUP BY clause helps you summarize data for reporting purposes.\n\nHAVING – specify the conditions to filter the groups summarized by the GROUP BY clause.</item>
+        <item>UNION – combine result sets of multiple queries into a single result set. We also discuss the differences between UNION and UNION ALL clauses.\n\nEXCEPT – compare the result sets of two queries and returns distinct rows from the left query that are not output by the right query.\n\nINTERSECT – compare the result sets of two queries and returns distinct rows that are output by both queries.</item>
+        <item>SUBQUERY – introduce you to the SQLite subquery and correlated subquery.\n\nEXISTS operator – test for the existence of rows returned by a subquer</item>
+        <item>CASE – add conditional logic to the query.</item>
+        <item>This section guides you on how to update data in the table using insert, update, and delete statements.\n\nINSERT – insert rows into a table\n\nUPDATE – update existing rows in a table.\n\nDELETE – delete rows from a table.\n\nREPLACE – insert a new row or replace the existing row in a table.</item>
+        <item>TRANSACTION – show you how to handle transactions.</item>
+        <item>In this section, we show you how to create database objects such as tables, views, indexes using SQL data definition language.\n\nSQLite DATA TYPES – introduce you to the SQLite dynamic types system and its important concepts: storage classes, manifest typing, and type affinity.\n\nCREATE TABLE – show you how to create a new table in the database.\n\nPRIMARY KEY – show you how to define the primary key for a table.\n\nNOT NULL constraint – ensure values in a column are not NULL.\n\nUNIQUE constraint – ensure values in a column or a group of columns are unique.\n\nCHECK constraint – ensure the values in a column meet a specified condition defined by an expression.\n\nAUTOINCREMENT – explain how the attribute AUTOINCREMENT works and why you should avoid using it.\n\nALTER TABLE – show you how to use modify the structure of an existing table.\n\nRENAME COLUMN – learn step by step how to rename a column of a table.\n\nDROP TABLE – guide you on how to remove a table from the database.\n\nVACUUM – show you how to optimize database file.</item>
+        <item>CREATE VIEW – introduce you to the view concept and show you how to create a new view in the database.\n\nDROP VIEW – show you how to drop a view from its database schema.</item>
+        <item>INDEX – teach you about the index and how to utilize indexes to speed up your queries.\n\nINDEX FOR EXPRESSIONS – show you how to use the expression-based index.</item>
+        <item>TRIGGER – manage triggers in SQLite database.\n\nINSTEAD OF triggers – learn about INSTEAD OF triggers and how to create an INSTEAD OF trigger to update data via a view.</item>
+        <item>FULL-TEXT SEARCH – get started with the full-text search in SQLite.</item>
+        <item>SQLite COMMANDS – show you the most commonly used command in sqlite3 program.\n\nSQLite SHOW TABLES – list all tables in a database.\n\nSQLite DESCRIBE TABLE – show the structure of a table.\n\nSQLite DUMP – how to use dump command to backup and restore a database.\n\nSQLite IMPORT CSV – how to import CSV file into a table.\n\nSQLite EXPORT CSV – how to export an SQLite database to CSV files.</item>
+        <item>This tutorial shows you how to use the SQLite aggregate functions to find the maximum, minimum, average, sum, and count of a set of values.</item>
+        <item>This section provides you with SQLite date and time functions that help you manipulate datetime data effectively.</item>
+        <item>This section shows the most commonly used SQLite string functions that help you manipulate character string data effectively</item>
+        <item>SQLite window functions perform a calculation on a set of rows that are related to the current row. Unlike aggregate functions, window functions do not cause rows to become grouped into a single result row.</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
