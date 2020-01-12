@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -40,8 +41,7 @@ class MainActivity : AppCompatActivity(), IRouter, IToolbarActivity {
 
     override fun onBackPressed() {
         val destination = navController?.currentDestination
-        if (destination != null &&
-            (destination.id == R.id.sectionsFragment || destination.id == R.id.settingsFragment)
+        if (checkCurrentDestination(destination)
         ) {
             finish()
             return
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), IRouter, IToolbarActivity {
 
     override fun setToolbar(toolbar: Toolbar) {
         setSupportActionBar(toolbar)
-        supportActionBar?.title  = getString(R.string.common_empty)
+        supportActionBar?.title = getString(R.string.common_empty)
     }
 
     private fun initBottomNavigationView() {
@@ -68,4 +68,11 @@ class MainActivity : AppCompatActivity(), IRouter, IToolbarActivity {
             vBottomNavigation?.visibility = View.GONE
         }
     }
+
+    private fun checkCurrentDestination(destination: NavDestination?) =
+        destination != null &&
+                destination.run {
+                    id == R.id.sectionsFragment || id == R.id.settingsFragment || id == R.id.homeFragment
+                }
+
 }

@@ -1,14 +1,14 @@
 package ru.ar4i.sqlearn.application.di.components
 
-import android.content.Context
+import android.app.Application
 import ru.ar4i.sqlearn.application.di.modules.AppModule
 import ru.ar4i.sqlearn.presentation.sections.SectionsFragment
 
 class ApplicationComponent:
     IApplicationComponent {
 
-    constructor(context: Context){
-        AppModule.setContext(context)
+    constructor(application: Application){
+        AppModule.setApplication(application)
     }
 
     private constructor()

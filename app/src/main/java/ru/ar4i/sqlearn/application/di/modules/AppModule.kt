@@ -6,7 +6,7 @@ import android.content.Context
 object AppModule {
     private lateinit var app: Application
 
-    fun setContext(context: Application) {
+    fun setApplication(context: Application) {
         this.app = context
     }
 
