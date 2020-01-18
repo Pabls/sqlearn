@@ -10,9 +10,8 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.ar4i.sqlearn.R
-import ru.ar4i.sqlearn.presentation.splash.SplashFragmentDirections
 
-class MainActivity : AppCompatActivity(), IRouter, IToolbarActivity {
+class MainActivity : AppCompatActivity(), IToolbarActivity {
     private var navController: NavController? = null
     private var vBottomNavigation: BottomNavigationView? = null
 
@@ -25,28 +24,15 @@ class MainActivity : AppCompatActivity(), IRouter, IToolbarActivity {
             R.id.nav_host_fragment
         )
         initBottomNavigationView()
-        checkState(savedInstanceState)
-    }
-
-    override fun navigateToApplication() {
-        Thread(Runnable {
-            Thread.sleep(4000L)
-            runOnUiThread {
-                val navDirections = SplashFragmentDirections.actionSplashFragmentToHomeFragment()
-                navController?.navigate(navDirections)
-                vBottomNavigation?.visibility = View.VISIBLE
-            }
-        }).start()
     }
 
     override fun onBackPressed() {
         val destination = navController?.currentDestination
-        if (checkCurrentDestination(destination)
-        ) {
+        if (checkCurrentDestination(destination)) {
             finish()
-            return
+        } else {
+            super.onBackPressed()
         }
-        super.onBackPressed()
     }
 
     override fun setToolbar(toolbar: Toolbar) {
@@ -56,16 +42,19 @@ class MainActivity : AppCompatActivity(), IRouter, IToolbarActivity {
 
     private fun initBottomNavigationView() {
         vBottomNavigation = findViewById(R.id.nav_menu)
-        if (navController != null)
-            vBottomNavigation?.setupWithNavController(navController!!)
-    }
+        navController?.let { controller ->
+            vBottomNavigation?.let { navigation ->
+                navigation.setupWithNavController(controller)
 
-    private fun checkState(savedInstanceState: Bundle?) {
-        val destination = navController?.currentDestination
-        if (savedInstanceState != null && destination?.id != R.id.splashFragment) {
-            vBottomNavigation?.visibility = View.VISIBLE
-        } else {
-            vBottomNavigation?.visibility = View.GONE
+                controller.addOnDestinationChangedListener { _, destination, _ ->
+                    navigation.visibility =
+                        if (destination.id != R.id.splashFragment) {
+                            View.VISIBLE
+                        } else {
+                            View.GONE
+                        }
+                }
+            }
         }
     }
 

@@ -19,14 +19,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/main_graph" />
 
-    <include
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_menu"
-        layout="@layout/view_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/blue"
         android:visibility="gone"
+        app:itemIconTint="@color/nav_menu_colors"
+        app:itemTextColor="@color/nav_menu_colors"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/navigation_menu">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
