@@ -2,7 +2,9 @@ package ru.ar4i.sqlearn.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -11,7 +13,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.ar4i.sqlearn.R
 
-class MainActivity : AppCompatActivity(), IToolbarActivity {
+class MainActivity : AppCompatActivity(), IToolbarActivity, IModeActivity {
     private var navController: NavController? = null
     private var vBottomNavigation: BottomNavigationView? = null
 
@@ -35,9 +37,20 @@ class MainActivity : AppCompatActivity(), IToolbarActivity {
         }
     }
 
-    override fun setToolbar(toolbar: Toolbar) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (item.itemId == android.R.id.home) {
+            onBackPressed()
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun setToolbar(toolbar: Toolbar, showBackButton: Boolean) {
         setSupportActionBar(toolbar)
         supportActionBar?.title = getString(R.string.common_empty)
+        supportActionBar?.setDisplayHomeAsUpEnabled(showBackButton)
+        supportActionBar?.setHomeButtonEnabled(showBackButton)
     }
 
     private fun initBottomNavigationView() {
@@ -63,5 +76,10 @@ class MainActivity : AppCompatActivity(), IToolbarActivity {
                 destination.run {
                     id == R.id.sectionsFragment || id == R.id.settingsFragment || id == R.id.homeFragment
                 }
+
+    override fun setDarkMode(set: Boolean) {
+        delegate.localNightMode = if (set) AppCompatDelegate.MODE_NIGHT_YES
+        else AppCompatDelegate.MODE_NIGHT_NO
+    }
 
 }

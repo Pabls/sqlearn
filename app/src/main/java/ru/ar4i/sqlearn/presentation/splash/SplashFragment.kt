@@ -15,7 +15,7 @@ class SplashFragment : BaseFragment() {
 
         Thread(Runnable {
             Thread.sleep(4000L)
-            activity!!.runOnUiThread {
+            activity?.runOnUiThread {
                 val navDirections =
                     SplashFragmentDirections.actionSplashFragmentToNestedGraph()
                 findNavController().navigate(navDirections)

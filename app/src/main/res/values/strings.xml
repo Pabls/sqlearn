@@ -81,7 +81,4 @@
         <item>SQLite window functions perform a calculation on a set of rows that are related to the current row. Unlike aggregate functions, window functions do not cause rows to become grouped into a single result row.</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 </resources>

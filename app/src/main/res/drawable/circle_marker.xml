@@ -2,10 +2,10 @@
     android:innerRadius="0dp"
     android:shape="oval"
     android:useLevel="false">
-    <solid android:color="@color/green" />
+    <solid android:color="@color/color_accent" />
 
     <stroke
         android:width="0dp"
-        android:color="@color/green" />
+        android:color="@color/color_accent" />
 
 </shape>

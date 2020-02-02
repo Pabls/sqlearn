@@ -22,14 +22,15 @@ abstract class BaseToolbarFragment : BaseFragment() {
     abstract fun getTitle(): String
 
     protected fun showBackButton() {
-        toolbar?.setNavigationIcon(R.drawable.ic_arrow_back)
-        toolbar?.setNavigationOnClickListener { activity?.onBackPressed() }
+        if (toolbar != null && activity != null && activity is IToolbarActivity) {
+            (activity!! as IToolbarActivity).setToolbar(toolbar!!, true)
+        }
     }
 
     protected fun showMenu() {
         if (toolbar != null && activity != null && activity is IToolbarActivity) {
             setHasOptionsMenu(true)
-            (activity!! as IToolbarActivity).setToolbar(toolbar!!)
+            (activity!! as IToolbarActivity).setToolbar(toolbar!!, false)
         }
     }
 }

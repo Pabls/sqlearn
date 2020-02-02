@@ -11,6 +11,7 @@
     <item
         android:id="@+id/menu_filter"
         android:title="@string/sections_fragment_menu.filter"
+        android:iconTint="@color/color_on_bar"
         android:icon="@drawable/ic_filter_list"
         appcompat:showAsAction="always" />
 

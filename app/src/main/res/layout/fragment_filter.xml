@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16"
         android:layout_marginTop="@dimen/margin_16"
+        android:paddingStart="@dimen/padding_8"
         android:text="@string/fragment_filter.sorting"
         android:textSize="@dimen/text_size_18"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16"
         android:layout_marginTop="@dimen/margin_32"
+        android:paddingStart="@dimen/padding_8"
         android:text="@string/fragment_filter.filters"
         android:textSize="@dimen/text_size_18"
         app:layout_constraintStart_toStartOf="parent"
@@ -118,6 +120,7 @@
         <Button
             android:id="@+id/btn_save"
             style="@style/Widget.AppCompat.Button.Borderless"
+            android:textColor="@color/green"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

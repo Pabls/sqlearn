@@ -55,11 +55,11 @@ class SectionsAdapter(private val listener: (String) -> Unit) :
             tvDescription.text = section.description
             clContainer.setOnClickListener { listener.invoke(section.name) }
 
-            if (section.isDone) {
-                setViewState(R.color.transparent_black_95, View.VISIBLE)
-            } else {
-                setViewState(R.color.transparent_black_50, View.GONE)
-            }
+//            if (section.isDone) {
+//                setViewState(R.color.transparent_black_95, View.VISIBLE)
+//            } else {
+//                setViewState(R.color.transparent_black_50, View.GONE)
+//            }
         }
 
         private fun setViewState(colorId: Int, viewState: Int) {

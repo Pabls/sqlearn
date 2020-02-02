@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/margin_28"
     tools:context=".presentation.main.MainActivity">
 
     <fragment
@@ -23,7 +22,7 @@
         android:id="@+id/nav_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/blue"
+        android:background="@color/color_bar"
         android:visibility="gone"
         app:itemIconTint="@color/nav_menu_colors"
         app:itemTextColor="@color/nav_menu_colors"
