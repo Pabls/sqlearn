@@ -1,26 +1,23 @@
 package ru.ar4i.sqlearn.presentation.splash
 
-import android.os.Bundle
-import android.view.View
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import ru.ar4i.sqlearn.R
-import ru.ar4i.sqlearn.presentation.base.BaseFragment
+import ru.ar4i.sqlearn.presentation.base.fragment.BaseVmFragment
 
-class SplashFragment : BaseFragment() {
+class SplashFragment : BaseVmFragment<SplashViewModel>() {
 
-    override fun getLayoutId(): Int = R.layout.fragment_splash
+    override val layoutId: Int
+        get() = R.layout.fragment_splash
+    override val viewModel: Class<SplashViewModel>
+        get() = SplashViewModel::class.java
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        Thread(Runnable {
-            Thread.sleep(4000L)
-            activity?.runOnUiThread {
-                val navDirections =
-                    SplashFragmentDirections.actionSplashFragmentToNestedGraph()
-                findNavController().navigate(navDirections)
-            }
-        }).start()
+    override fun initObservers() {
+        vm.isDarkModeChecked.observe(viewLifecycleOwner, Observer {
+            getModeActivity().setDarkMode(it)
+            val navDirections =
+                SplashFragmentDirections.actionSplashFragmentToNestedGraph()
+            findNavController().navigate(navDirections)
+        })
     }
-
 }

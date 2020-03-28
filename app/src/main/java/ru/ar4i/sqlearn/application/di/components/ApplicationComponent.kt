@@ -1,19 +1,16 @@
 package ru.ar4i.sqlearn.application.di.components
 
 import android.app.Application
+import androidx.lifecycle.ViewModelProvider
 import ru.ar4i.sqlearn.application.di.modules.AppModule
-import ru.ar4i.sqlearn.presentation.sections.SectionsFragment
 
-class ApplicationComponent:
+class ApplicationComponent :
     IApplicationComponent {
+    private constructor()
 
-    constructor(application: Application){
+    constructor(application: Application) {
         AppModule.setApplication(application)
     }
 
-    private constructor()
-
-    override fun inject(sectionsFragment: SectionsFragment) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun provideViewModelsFactory(): ViewModelProvider.Factory = ViewModelsFactory
 }

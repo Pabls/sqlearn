@@ -60,6 +60,8 @@ dependencies {
     //Gson
     implementation 'com.google.code.gson:gson:2.8.5'
 
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+
     //Tests
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

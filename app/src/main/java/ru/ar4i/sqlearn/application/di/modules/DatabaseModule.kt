@@ -1,7 +1,6 @@
 package ru.ar4i.sqlearn.application.di.modules
 
 import androidx.room.Room
-import ru.ar4i.sqlearn.data.database.CompletedSectionsDao
 import ru.ar4i.sqlearn.data.database.MainDatabase
 
 object DatabaseModule {
@@ -12,5 +11,5 @@ object DatabaseModule {
             MainDatabase.DATABASE_NAME
         ).build()
 
-    fun provideCompletedSectionsDao(): CompletedSectionsDao = database.getCompletedSectionsDao()
+    fun provideCompletedSectionsDao() = database.getCompletedSectionsDao()
 }

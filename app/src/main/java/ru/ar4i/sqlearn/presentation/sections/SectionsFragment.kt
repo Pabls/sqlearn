@@ -6,25 +6,32 @@ import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.ar4i.sqlearn.R
 import ru.ar4i.sqlearn.data.entities.SectionVm
-import ru.ar4i.sqlearn.presentation.base.BaseToolbarFragment
+import ru.ar4i.sqlearn.presentation.base.fragment.BaseVmFragment
 import ru.ar4i.sqlearn.presentation.sections.adapter.SectionsAdapter
 import ru.ar4i.sqlearn.presentation.sections.filters.FilterChangeListener
 import ru.ar4i.sqlearn.presentation.sections.filters.FiltersBottomDialogFragment
 
-class SectionsFragment : BaseToolbarFragment() {
+class SectionsFragment : BaseVmFragment<SectionsViewModel>() {
+
+    override val layoutId: Int
+        get() = R.layout.fragment_sections
+    override val viewModel: Class<SectionsViewModel>
+        get() = SectionsViewModel::class.java
 
     private var rvSections: RecyclerView? = null
     private var adapter: SectionsAdapter? = null
     private var navController: NavController? = null
     private var searchViewEditText: SearchView? = null
 
-    private var sortingType: String? = null
-    private var filterType: String? = null
     private var sections = mutableListOf<SectionVm>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setTitle(getString(R.string.fragment_menu_toolbar_title))
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,8 +48,6 @@ class SectionsFragment : BaseToolbarFragment() {
         rvSections?.adapter = adapter
         setData()
     }
-
-    override fun getTitle(): String = getString(R.string.fragment_menu_toolbar_title)
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -74,30 +79,18 @@ class SectionsFragment : BaseToolbarFragment() {
         }
     }
 
-    override fun onDestroyView() {
-//        val visiblePosition =
-//            (rvSections?.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
-        super.onDestroyView()
+    override fun initObservers() {
     }
 
-    override fun getLayoutId(): Int = R.layout.fragment_sections
-
-
     private fun openFilterMenu() {
-        val fragment = FiltersBottomDialogFragment.newInstanse(this.sortingType, this.filterType)
-        fragment.show(activity!!.supportFragmentManager, FiltersBottomDialogFragment.TAG)
+        val (sortingType, filterType) = vm.getFilters()
+        val fragment = FiltersBottomDialogFragment.newInstanse(sortingType, filterType)
+        fragment.show(requireFragmentManager(), FiltersBottomDialogFragment.TAG)
         fragment.setFilterChangeListener(object : FilterChangeListener {
-
             override fun onSaveButtonClick(sortingType: String?, filterType: String?) {
-                this@SectionsFragment.sortingType = sortingType
-                this@SectionsFragment.filterType = filterType
+                vm.setFilters(sortingType, filterType)
             }
-
-            override fun onResetButtonClick() {
-                sortingType = null
-                filterType = null
-            }
-
+            override fun onResetButtonClick() { vm.setFilters(null, null) }
         })
     }
 

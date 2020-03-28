@@ -13,22 +13,6 @@ import ru.ar4i.sqlearn.R
 
 class FiltersBottomDialogFragment : BottomSheetDialogFragment() {
 
-    companion object {
-
-        val TAG = "FiltersBottomDialogFragment"
-
-        const val EXTRA_SORTING_TYPE = "EXTRA_SORTING_TYPE"
-        const val EXTRA_FILTER_TYPE = "EXTRA_FILTER_TYPE"
-
-        fun newInstanse(sortingType: String?, filterType: String?): FiltersBottomDialogFragment =
-            FiltersBottomDialogFragment().apply {
-                arguments = Bundle().apply {
-                    putString(EXTRA_SORTING_TYPE, sortingType)
-                    putString(EXTRA_FILTER_TYPE, filterType)
-                }
-            }
-    }
-
     private var sortingType: String? = null
     private var filterType: String? = null
     private var listener: FilterChangeListener? = null
@@ -88,5 +72,17 @@ class FiltersBottomDialogFragment : BottomSheetDialogFragment() {
         dismiss()
     }
 
+    companion object {
+        val TAG = "FiltersBottomDialogFragment"
+        const val EXTRA_SORTING_TYPE = "EXTRA_SORTING_TYPE"
+        const val EXTRA_FILTER_TYPE = "EXTRA_FILTER_TYPE"
 
+        fun newInstanse(sortingType: String?, filterType: String?): FiltersBottomDialogFragment =
+            FiltersBottomDialogFragment().apply {
+                arguments = Bundle().apply {
+                    putString(EXTRA_SORTING_TYPE, sortingType)
+                    putString(EXTRA_FILTER_TYPE, filterType)
+                }
+            }
+    }
 }

@@ -14,7 +14,6 @@
         android:layout_marginTop="@dimen/margin_16"
         android:layout_marginEnd="@dimen/margin_8"
         android:lines="1"
-        android:textColor="@color/white"
         android:textSize="@dimen/text_size_18"
         app:layout_constraintEnd_toStartOf="@+id/img_done"
         app:layout_constraintHorizontal_bias="0.0"
@@ -61,6 +60,7 @@
         android:id="@+id/v_divider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
+        android:background="@color/color_accent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

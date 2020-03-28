@@ -78,8 +78,16 @@ class MainActivity : AppCompatActivity(), IToolbarActivity, IModeActivity {
                 }
 
     override fun setDarkMode(set: Boolean) {
-        delegate.localNightMode = if (set) AppCompatDelegate.MODE_NIGHT_YES
-        else AppCompatDelegate.MODE_NIGHT_NO
+        val isCurrentModeDark = delegate.localNightMode == AppCompatDelegate.MODE_NIGHT_YES
+        if (set) {
+            if (!isCurrentModeDark) {
+                delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
+            }
+        } else {
+            if (isCurrentModeDark) {
+                delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
+            }
+        }
     }
 
 }

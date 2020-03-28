@@ -35,6 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:buttonTint="@color/color_accent"
             android:checked="true"
             android:text="@string/fragment_filter.sorting.asc" />
 
@@ -43,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:buttonTint="@color/color_accent"
             android:text="@string/fragment_filter.sorting.desc" />
     </RadioGroup>
 
@@ -75,6 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:buttonTint="@color/color_accent"
             android:checked="true"
             android:text="@string/fragment_filter.filters.all" />
 
@@ -83,6 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:buttonTint="@color/color_accent"
             android:text="@string/fragment_filter.filters.completed" />
 
         <RadioButton
@@ -90,44 +94,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:buttonTint="@color/color_accent"
             android:text="@string/fragment_filter.filters.not_completed" />
 
     </RadioGroup>
 
-    <LinearLayout
-        android:id="@+id/ll_buttons"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btn_reset"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16"
         android:layout_marginTop="@dimen/margin_16"
-        android:layout_marginEnd="@dimen/margin_16"
-        android:layout_marginBottom="@dimen/margin_8"
-        android:orientation="horizontal"
+        android:text="@string/fragment_filter.button.reset"
+        android:textColor="@color/color_primary_dark"
+        android:textSize="@dimen/text_size_18"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_save"
+        app:layout_constraintTop_toBottomOf="@+id/rg_filters" />
+
+    <Button
+        android:id="@+id/btn_save"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginEnd="16dp"
+        android:text="@string/fragment_filter.button.save"
+        android:textColor="@color/color_accent"
+        android:textSize="@dimen/text_size_18"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rg_filters">
-
-        <Button
-            android:id="@+id/btn_reset"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/fragment_filter.button.reset"
-            android:textSize="@dimen/text_size_18" />
-
-        <Button
-            android:id="@+id/btn_save"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:textColor="@color/green"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/fragment_filter.button.save"
-            android:textSize="@dimen/text_size_18" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/rg_filters" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
