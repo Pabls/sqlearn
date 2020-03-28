@@ -1,6 +1,7 @@
 package ru.ar4i.sqlearn.data.repositories.settings
 
 import android.content.SharedPreferences
+import java.lang.Exception
 
 object SettingsRepository : ISettingsRepository {
 
@@ -14,22 +15,37 @@ object SettingsRepository : ISettingsRepository {
     }
 
     override suspend fun saveCurrentFilters(sortingState: String?, filterState: String?) {
-        getEditor().putString(SORTING_STATE, sortingState).putString(FILTER_STATE, filterState)
-            .commit()
+        try {
+            getEditor().putString(SORTING_STATE, sortingState).putString(FILTER_STATE, filterState)
+                .commit()
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
     }
 
     override suspend fun getCurrentFilters(): Pair<String?, String?> =
-        prefs.getString(SORTING_STATE, null) to prefs.getString(FILTER_STATE, null)
+        try {
+            prefs.getString(SORTING_STATE, null) to prefs.getString(FILTER_STATE, null)
+        } catch (ex: Exception) {
+            null to null
+        }
 
     override suspend fun saveMode(isDark: Boolean) {
-        val mode = if (isDark) AppMode.Dark else AppMode.Light
-        getEditor().putString(APP_MODE, mode.name).commit()
+        try {
+            val mode = if (isDark) AppMode.Dark else AppMode.Light
+            getEditor().putString(APP_MODE, mode.name).commit()
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+        }
     }
 
-    override suspend fun isDarkMode(): Boolean {
-        val mode = prefs.getString(APP_MODE, AppMode.Light.name)
-        return mode == AppMode.Dark.name
-    }
+    override suspend fun isDarkMode(): Boolean =
+        try {
+            val mode = prefs.getString(APP_MODE, AppMode.Light.name)
+            mode == AppMode.Dark.name
+        } catch (ex: Exception) {
+            false
+        }
 
     private fun getEditor() = prefs.edit()
 

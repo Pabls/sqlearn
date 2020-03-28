@@ -1,10 +1,8 @@
 package ru.ar4i.sqlearn.presentation.sections
 
 import android.app.Application
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.*
 import ru.ar4i.sqlearn.domain.ISettingsInteractor
 import ru.ar4i.sqlearn.presentation.base.viewModel.BaseViewModel
 
@@ -23,22 +21,22 @@ class SectionsViewModel(
     fun setFilters(sortingType: String?, filterType: String?) {
         this.sortingType = sortingType
         this.filterType = filterType
-        val job = GlobalScope.launch(Dispatchers.IO) {
-            settingsInteractor.saveCurrentFilters(sortingType, filterType)
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                settingsInteractor.saveCurrentFilters(sortingType, filterType)
+            }
         }
-        track(job)
     }
 
     fun getFilters() = sortingType to filterType
 
     private fun checkFilters() {
-        val job = GlobalScope.launch(Dispatchers.IO) {
-            val filters = async {
+        viewModelScope.launch {
+            val (sorting, filters) = withContext(Dispatchers.IO) {
                 settingsInteractor.getCurrentFilters()
             }
-            sortingType = filters.await().first
-            filterType = filters.await().second
+            sortingType = sorting
+            filterType = filters
         }
-        track(job)
     }
 }

@@ -2,6 +2,7 @@ package ru.ar4i.sqlearn.presentation.splash
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import ru.ar4i.sqlearn.domain.ISettingsInteractor
 import ru.ar4i.sqlearn.presentation.base.viewModel.BaseViewModel
@@ -17,12 +18,11 @@ class SplashViewModel(
     }
 
     private fun checkMode() {
-        val job = GlobalScope.launch(Dispatchers.Main) {
-            val isDarkMode = async(Dispatchers.IO) {
+        viewModelScope.launch {
+            val isDarkMode = withContext(Dispatchers.IO) {
                 settingsInteractor.isDarkMode()
             }
-            isDarkModeChecked.value = isDarkMode.await()
+            isDarkModeChecked.value = isDarkMode
         }
-        track(job)
     }
 }
