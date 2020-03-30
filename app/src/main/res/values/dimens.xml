@@ -10,6 +10,7 @@
     <dimen name="margin_28">28dp</dimen>
     <dimen name="margin_32">32dp</dimen>
     <dimen name="margin_48">48dp</dimen>
+    <dimen name="margin_56">56dp</dimen>
     <dimen name="margin_88">88dp</dimen>
 
     <dimen name="padding_0">0dp</dimen>
@@ -32,5 +33,9 @@
 
     <dimen name="icon_size_48">48dp</dimen>
     <dimen name="icon_size_64">64dp</dimen>
+
+
+    <dimen name="height_2">2dp</dimen>
+    <dimen name="height_48">48dp</dimen>
 
 </resources>

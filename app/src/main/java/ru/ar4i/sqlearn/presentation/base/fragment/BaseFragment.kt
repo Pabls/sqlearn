@@ -30,12 +30,13 @@ abstract class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tvTitle = view.findViewById(R.id.toolbar_title)
-        tvTitle?.text = title
         toolbar = view.findViewById(R.id.toolbar)
+        initToolbarTitle()
     }
 
     protected fun setTitle(title: String) {
         this.title = title
+        initToolbarTitle()
     }
 
     protected fun showBackButton() {
@@ -65,5 +66,9 @@ abstract class BaseFragment : Fragment() {
             } catch (ex: IllegalArgumentException) {
             }
         }
+    }
+
+    private fun initToolbarTitle(){
+        tvTitle?.text = title
     }
 }

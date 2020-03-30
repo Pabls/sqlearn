@@ -1,6 +1,7 @@
 package ru.ar4i.sqlearn.application.di.components
 
 import android.app.Application
+import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import ru.ar4i.sqlearn.application.di.modules.AppModule
 
@@ -12,5 +13,6 @@ class ApplicationComponent :
         AppModule.setApplication(application)
     }
 
-    override fun provideViewModelsFactory(): ViewModelProvider.Factory = ViewModelsFactory
+    override fun provideViewModelsFactory(bundle: Bundle?): ViewModelProvider.Factory =
+        ViewModelsFactory.also { it.setBundle(bundle) }
 }

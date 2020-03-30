@@ -1,12 +1,13 @@
 package ru.ar4i.sqlearn.presentation.sections.adapter
 
+import android.os.Build
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import ru.ar4i.sqlearn.R
 import ru.ar4i.sqlearn.data.entities.SectionVm
@@ -52,7 +53,11 @@ class SectionsAdapter(private val listener: (String) -> Unit) :
                 "${tvSectionName.context.getString(R.string.item_section_section)} " +
                         "${section.id}${tvSectionName.context.getString(R.string.item_section_dot)}"
             tvSectionName.text = "$sectionId ${section.name}"
-            tvDescription.text = section.description
+            tvDescription.text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                Html.fromHtml(section.description, Html.FROM_HTML_OPTION_USE_CSS_COLORS)
+            } else {
+                section.description
+            }
             clContainer.setOnClickListener { listener.invoke(section.name) }
             imgDone.visibility = if (section.isDone) View.VISIBLE else View.GONE
         }

@@ -16,13 +16,13 @@ abstract class BaseVmFragment<V : BaseViewModel> : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        vm = ViewModelProviders.of(this, App.applicationComponent.provideViewModelsFactory())
+        vm = ViewModelProviders.of(this, App.applicationComponent.provideViewModelsFactory(arguments))
             .get(viewModel)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         initObservers()
+        super.onViewCreated(view, savedInstanceState)
     }
 
     protected inline fun <T> LiveData<Event<T>>.observeEvent(crossinline observer: (T?) -> Unit) =

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NavigationView">
+        <attr name="nv_icon_src" format="reference" />
+        <attr name="nv_text" format="string" />
+    </declare-styleable>
+</resources>
